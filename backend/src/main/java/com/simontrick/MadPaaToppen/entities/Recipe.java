@@ -1,17 +1,11 @@
-package Entities;
+package com.simontrick.MadPaaToppen.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDateTime;
-import java.util.UUID;
-
 @Entity
 @Table(name="recipe")
-public class recipe {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private UUID id;
+public class Recipe extends Base_entity {
 
     @NotNull
     private String title;
@@ -32,11 +26,5 @@ public class recipe {
     private Integer version;
 
     @Column(name = "parent_recipe_id")
-    private recipe parent_recipe;
-
-    private UUID created_by;
-
-    private LocalDateTime created_at;
-
-    private LocalDateTime updated_at;
+    private Recipe parent_recipe;
 }
