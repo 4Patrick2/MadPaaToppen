@@ -2,10 +2,16 @@ package com.simontrick.MadPaaToppen.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.*;
 
 @Entity
 @Table(name = "unit")
-public class Unit extends Base_entity {
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Unit extends BaseEntity {
     private String name;
 
     private String abbr;

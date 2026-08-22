@@ -2,10 +2,16 @@ package com.simontrick.MadPaaToppen.entities;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.*;
 
 @Entity
 @Table(name="recipe")
-public class Recipe extends Base_entity {
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class Recipe extends BaseEntity {
 
     @NotNull
     private String title;
@@ -25,6 +31,7 @@ public class Recipe extends Base_entity {
     @NotNull
     private Integer version;
 
-    @Column(name = "parent_recipe_id")
-    private Recipe parent_recipe;
+    @ManyToOne
+    @JoinColumn(name = "parent_recipe_id")
+    private Recipe parentRecipe;
 }
