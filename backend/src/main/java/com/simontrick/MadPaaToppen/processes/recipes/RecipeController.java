@@ -1,6 +1,6 @@
-package com.simontrick.MadPaaToppen.services.recipes;
+package com.simontrick.MadPaaToppen.processes.recipes;
 
-import com.simontrick.MadPaaToppen.services.recipes.DTOs.CreateRecipeRequest;
+import com.simontrick.MadPaaToppen.processes.recipes.DTOs.CreateRecipeRequest;
 import com.simontrick.MadPaaToppen.entities.Recipe;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

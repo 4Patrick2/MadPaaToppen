@@ -1,9 +1,9 @@
-package com.simontrick.MadPaaToppen.services.recipes.impl;
+package com.simontrick.MadPaaToppen.processes.recipes.impl;
 
-import com.simontrick.MadPaaToppen.services.recipes.DTOs.CreateRecipeRequest;
+import com.simontrick.MadPaaToppen.processes.recipes.DTOs.CreateRecipeRequest;
 import com.simontrick.MadPaaToppen.entities.Recipe;
-import com.simontrick.MadPaaToppen.services.recipes.repository.RecipeRepository;
-import com.simontrick.MadPaaToppen.services.recipes.RecipeService;
+import com.simontrick.MadPaaToppen.processes.recipes.repository.RecipeRepository;
+import com.simontrick.MadPaaToppen.processes.recipes.RecipeService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

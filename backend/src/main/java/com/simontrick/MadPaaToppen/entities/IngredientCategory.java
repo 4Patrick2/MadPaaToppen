@@ -11,6 +11,6 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Ingredient_category extends BaseEntity {
+public class IngredientCategory extends BaseEntity {
     private String name;
 }

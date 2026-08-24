@@ -1,4 +1,4 @@
-package com.simontrick.MadPaaToppen.services.recipes.DTOs;
+package com.simontrick.MadPaaToppen.processes.recipes.DTOs;
 
 public record CreateRecipeRequest (
         String title,

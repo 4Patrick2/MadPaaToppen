@@ -1,4 +1,4 @@
-package com.simontrick.MadPaaToppen.services.recipes.repository;
+package com.simontrick.MadPaaToppen.processes.recipes.repository;
 
 import com.simontrick.MadPaaToppen.entities.Recipe;
 import org.springframework.data.jpa.repository.JpaRepository;

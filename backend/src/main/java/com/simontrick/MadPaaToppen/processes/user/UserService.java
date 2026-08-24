@@ -4,8 +4,6 @@ import com.simontrick.MadPaaToppen.entities.User;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.UUID;
-
 @AllArgsConstructor
 @Service
 public class UserService {
