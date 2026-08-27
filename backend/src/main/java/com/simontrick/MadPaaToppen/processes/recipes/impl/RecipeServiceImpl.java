@@ -2,6 +2,7 @@ package com.simontrick.MadPaaToppen.processes.recipes.impl;
 
 import com.simontrick.MadPaaToppen.processes.recipes.DTOs.CreateRecipeRequest;
 import com.simontrick.MadPaaToppen.entities.Recipe;
+import com.simontrick.MadPaaToppen.processes.recipes.DTOs.RecipeResponse;
 import com.simontrick.MadPaaToppen.processes.recipes.repository.RecipeRepository;
 import com.simontrick.MadPaaToppen.processes.recipes.RecipeService;
 import lombok.AllArgsConstructor;
@@ -20,7 +21,7 @@ public class RecipeServiceImpl implements RecipeService {
     }
 
     @Override
-    public Recipe createNewRecipe(CreateRecipeRequest request) {
+    public RecipeResponse createNewRecipe(CreateRecipeRequest request) {
         Recipe newRecipe = Recipe.builder()
                 .title(request.title())
                 .description(request.description())
@@ -31,6 +32,12 @@ public class RecipeServiceImpl implements RecipeService {
                 .version(1)
                 .build();
 
-        return recipeRepository.save(newRecipe);
+        recipeRepository.save(newRecipe);
+        return new RecipeResponse(newRecipe);
+    }
+
+    @Override
+    public RecipeResponse createRecipeVersion(CreateRecipeRequest request, Recipe source) {
+        return null;
     }
 }

@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/MadPaaToppen.iml" filepath="$PROJECT_DIR$/.idea/MadPaaToppen.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.simontrick.MadPaaToppen.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.simontrick.MadPaaToppen.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.simontrick.MadPaaToppen.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.simontrick.MadPaaToppen.test.iml" />
     </modules>
   </component>
 </project>
