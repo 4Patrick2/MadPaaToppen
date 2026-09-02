@@ -6,6 +6,7 @@ export interface Recipe {
   prepTime: number | null;
   cookTime: number | null;
   servings: number;
+  version: number;
 }
 
 export interface RecipeResponse {
@@ -41,4 +42,5 @@ export interface RecipeIngredient {
   quantity: number | null;
   unit: Unit;
   note: string;
+  element: string | null;
 }

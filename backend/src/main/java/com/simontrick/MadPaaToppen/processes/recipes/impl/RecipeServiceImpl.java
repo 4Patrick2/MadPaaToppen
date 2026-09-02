@@ -4,6 +4,7 @@ import com.simontrick.MadPaaToppen.processes.recipes.DTOs.CreateRecipeRequest;
 import com.simontrick.MadPaaToppen.entities.Recipe;
 import com.simontrick.MadPaaToppen.processes.recipes.DTOs.RecipeIngredientResponse;
 import com.simontrick.MadPaaToppen.processes.recipes.DTOs.RecipeResponse;
+import com.simontrick.MadPaaToppen.processes.recipes.DTOs.RecipeVersionResponse;
 import com.simontrick.MadPaaToppen.processes.recipes.repository.RecipeIngredientRepository;
 import com.simontrick.MadPaaToppen.processes.recipes.repository.RecipeRepository;
 import com.simontrick.MadPaaToppen.processes.recipes.RecipeService;
@@ -57,5 +58,13 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public RecipeResponse createRecipeVersion(CreateRecipeRequest request, Recipe source) {
         return null;
+    }
+
+    @Override
+    public List<RecipeVersionResponse> getRecipeVersions(UUID recipeParentId) {
+        List<Recipe> recipeVersions = recipeRepository.findAllByParentRecipeOrderByVersion(recipeParentId);
+        return recipeVersions.stream()
+            .map(RecipeVersionResponse::new)
+            .toList();
     }
 }

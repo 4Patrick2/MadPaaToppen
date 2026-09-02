@@ -14,6 +14,7 @@ public record RecipeResponse(
         Integer prepTime,
         Integer cookTime,
         Integer servings,
+        Integer version,
         List<RecipeIngredientResponse> ingredients
 ) {
     public RecipeResponse(Recipe recipe, List<RecipeIngredientResponse> ingredients) {
@@ -25,6 +26,7 @@ public record RecipeResponse(
                 recipe.getPrepTime(),
                 recipe.getCookTime(),
                 recipe.getServings(),
+                recipe.getVersion(),
                 ingredients
         );
     }

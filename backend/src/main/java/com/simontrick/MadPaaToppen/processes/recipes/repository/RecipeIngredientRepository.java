@@ -12,5 +12,6 @@ import com.simontrick.MadPaaToppen.entities.RecipeIngredient;
 public interface RecipeIngredientRepository extends JpaRepository<RecipeIngredient, UUID> {
 
     List<RecipeIngredient> findByRecipeId(UUID recipeId);
+    
 
 }
