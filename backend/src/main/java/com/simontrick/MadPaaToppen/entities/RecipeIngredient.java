@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Recipe_ingredient extends BaseEntity {
+public class RecipeIngredient extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "recipe_id")
     private Recipe recipe;

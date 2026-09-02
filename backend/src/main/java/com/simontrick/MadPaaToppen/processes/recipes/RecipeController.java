@@ -8,6 +8,10 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/recipes")
@@ -24,4 +28,10 @@ public class RecipeController {
     public RecipeResponse createRecipe(@Valid @RequestBody CreateRecipeRequest recipeRequest) {
         return recipeService.createNewRecipe(recipeRequest);
     }
+
+    @GetMapping("/{id}")
+    public RecipeResponse getRecipe(@PathVariable UUID id) {
+        return recipeService.getRecipe(id);
+    }
+    
 }

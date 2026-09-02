@@ -1,19 +1,22 @@
 package com.simontrick.MadPaaToppen.processes.recipes.DTOs;
 
 import com.simontrick.MadPaaToppen.entities.Recipe;
+import com.simontrick.MadPaaToppen.entities.DTOs.Instruction;
 
+import java.util.List;
 import java.util.UUID;
 
 public record RecipeResponse(
         UUID id,
         String title,
         String description,
-        String instructions,
+        List<Instruction> instructions,
         Integer prepTime,
         Integer cookTime,
-        Integer servings
+        Integer servings,
+        List<RecipeIngredientResponse> ingredients
 ) {
-    public RecipeResponse(Recipe recipe) {
+    public RecipeResponse(Recipe recipe, List<RecipeIngredientResponse> ingredients) {
         this(
                 recipe.getId(),
                 recipe.getTitle(),
@@ -21,7 +24,8 @@ public record RecipeResponse(
                 recipe.getInstructions(),
                 recipe.getPrepTime(),
                 recipe.getCookTime(),
-                recipe.getServings()
+                recipe.getServings(),
+                ingredients
         );
     }
 }

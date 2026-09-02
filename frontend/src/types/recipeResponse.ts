@@ -35,8 +35,7 @@ export interface Unit {
 }
 
 export interface RecipeIngredient {
-  id: string
-  recipe: string;
+  recipe: Recipe;
   ingredient: Ingredient;
   quantity: number | null;
   unit: Unit;

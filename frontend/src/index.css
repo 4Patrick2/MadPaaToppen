@@ -24,6 +24,7 @@
   --color-ctp-overlay1: var(--ctp-mocha-overlay1);
   --color-ctp-overlay2: var(--ctp-mocha-overlay2);
   --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Audiowide", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 }
 
 @layer base {

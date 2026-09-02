@@ -1,5 +1,12 @@
 package com.simontrick.MadPaaToppen.entities;
 
+import java.util.List;
+
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import com.simontrick.MadPaaToppen.entities.DTOs.Instruction;
+
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -18,7 +25,9 @@ public class Recipe extends BaseEntity {
 
     private String description;
 
-    private String instructions;
+    @JdbcTypeCode(SqlTypes.JSON)
+    @Column(columnDefinition = "jsonb")
+    private List<Instruction> instructions;
 
     @Column(name = "prep_time")
     private Integer prepTime;
