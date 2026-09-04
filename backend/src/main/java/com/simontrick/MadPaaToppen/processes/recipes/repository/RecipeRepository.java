@@ -9,5 +9,7 @@ import java.util.UUID;
 
 @Repository
 public interface RecipeRepository extends JpaRepository<Recipe, UUID> {
-    List<Recipe> findAllByParentRecipeOrderByVersion(UUID parentRecipeId);
+    List<Recipe> findAllByRecipeFamilyIdOrderByVersion(UUID recipeFamilyId);
+
+    List<Recipe> findAllByVersion(Integer version);
 }

@@ -22,7 +22,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public List<Recipe> getAllRecipes() {
-        return recipeRepository.findAll();
+        return recipeRepository.findAllByVersion(1);
     }
 
     @Override
@@ -35,8 +35,14 @@ public class RecipeServiceImpl implements RecipeService {
             .stream()
             .map(RecipeIngredientResponse::new)
             .toList();
+
+        List<RecipeVersionResponse> versions = recipeRepository
+            .findAllByRecipeFamilyIdOrderByVersion(recipe.getRecipeFamilyId())
+            .stream()
+            .map(RecipeVersionResponse::new)
+            .toList();
         
-        return new RecipeResponse(recipe, ingredients);
+        return new RecipeResponse(recipe, ingredients, versions);
     }
 
     @Override
@@ -49,10 +55,11 @@ public class RecipeServiceImpl implements RecipeService {
                 .cookTime(request.cookTime())
                 .servings(request.servings())
                 .version(1)
+                .recipeFamilyId(UUID.randomUUID())
                 .build();
 
         recipeRepository.save(newRecipe);
-        return new RecipeResponse(newRecipe, null);
+        return new RecipeResponse(newRecipe, null, null);
     }
 
     @Override
@@ -62,7 +69,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public List<RecipeVersionResponse> getRecipeVersions(UUID recipeParentId) {
-        List<Recipe> recipeVersions = recipeRepository.findAllByParentRecipeOrderByVersion(recipeParentId);
+        List<Recipe> recipeVersions = recipeRepository.findAllByRecipeFamilyIdOrderByVersion(recipeParentId);
         return recipeVersions.stream()
             .map(RecipeVersionResponse::new)
             .toList();

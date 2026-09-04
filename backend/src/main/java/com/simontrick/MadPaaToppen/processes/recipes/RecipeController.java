@@ -1,5 +1,7 @@
 package com.simontrick.MadPaaToppen.processes.recipes;
 
+import com.simontrick.MadPaaToppen.processes.rating.RatingService;
+import com.simontrick.MadPaaToppen.processes.rating.DTOs.RatingResponse;
 import com.simontrick.MadPaaToppen.processes.recipes.DTOs.CreateRecipeRequest;
 import com.simontrick.MadPaaToppen.entities.Recipe;
 import com.simontrick.MadPaaToppen.processes.recipes.DTOs.RecipeResponse;
@@ -9,8 +11,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @AllArgsConstructor
 public class RecipeController {
     private final RecipeService recipeService;
+    private final RatingService ratingService;
 
     @GetMapping
     public List<Recipe> getRecipes() {
@@ -34,4 +35,8 @@ public class RecipeController {
         return recipeService.getRecipe(id);
     }
     
+    @GetMapping("/{id}/rating")
+    public RatingResponse getRecipeRating(@PathVariable UUID id) {
+        return ratingService.getRatingForRecipe(id);
+    }
 }

@@ -1,6 +1,7 @@
 package com.simontrick.MadPaaToppen.entities;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -40,7 +41,6 @@ public class Recipe extends BaseEntity {
     @NotNull
     private Integer version;
 
-    @ManyToOne
-    @JoinColumn(name = "parent_recipe_id")
-    private Recipe parentRecipe;
+    @Column(name = "recipe_family_id")
+    private UUID recipeFamilyId;
 }

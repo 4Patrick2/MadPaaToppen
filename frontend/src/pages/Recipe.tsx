@@ -5,6 +5,8 @@ import { useEffect, useState } from "react"
 import { getRecipe } from "../api/recipes"
 import { Dot, Star } from "lucide-react"
 import { VersionSelection } from "../components/VersionSelection"
+import { Rating } from "../components/Rating"
+import { Actions } from "../components/Actions"
 
 export default function Recipe() {
     const { id } = useParams()
@@ -47,12 +49,30 @@ export default function Recipe() {
         })
     }
 
+    const handleVersionChange = (newVersion: number) => {
+        const selectedVersion = recipe.versions.find(
+            v => v.version === newVersion
+        ) 
+        if (!selectedVersion) return
+
+        getRecipe(selectedVersion.id)
+            .then(setRecipe)
+            .catch(console.error)
+    }
+
     return (
         <main className="mx-auto w-full max-w-7xl px-6">
             <Navbar />
 
             {/* Recipe heading */}
             <header className="mt-12 mb-8">
+
+                <img 
+                    src="/stegtFlaesk.jpg"
+                    alt={recipe.title}
+                    className="mb-8 h-64 w-full rounded-md object-cover"
+                />
+
                 <h1 className="font-serif text-5xl text-ctp-mauve">
                     {recipe.title}
                 </h1>
@@ -71,7 +91,7 @@ export default function Recipe() {
                 {/* Ingredients */}
                 <section className="pr-8">
                     
-                    <h2 className="mb-6 font-serif text-2xl text-ctp-mauve">
+                    <h2 className="mb-4 font-serif text-2xl text-ctp-mauve">
                         Ingredients
                     </h2>
 
@@ -113,15 +133,22 @@ export default function Recipe() {
                         )
                     )}
 
-                    <h2 className=" font-serif text-2xl text-ctp-mauve">
+                    <h2 className=" font-serif text-2xl text-ctp-mauve mb-2">
                         Rating
                     </h2>
-
-                    <Star className=" mb-3 h-6 w-6 fill-ctp-peach" />
+                    <Rating recipeId={recipe.id} />
 
                     <VersionSelection 
                         version={recipe.version}
+                        versions={recipe.versions}
+                        onVersionChange={handleVersionChange}
                     />
+
+                    <h2 className="font-serif text-2xl text-ctp-mauve mb-2">
+                        Actions
+                    </h2>
+                    <Actions />
+
                 </section>
 
                 {/* Instructions */}
@@ -183,6 +210,14 @@ export default function Recipe() {
                     </div>
                 </section>
 
+            </div>
+
+            {/* Footer stuff */}
+            <div className=" w-full">
+                <div className="mt-12 mb-8 h-px w-full bg-ctp-mauve/40" />
+                <h1 className="font-serif text-2xl text-ctp-mauve justify-start items-start">
+                    Comments
+                </h1>
             </div>
         </main>
     )

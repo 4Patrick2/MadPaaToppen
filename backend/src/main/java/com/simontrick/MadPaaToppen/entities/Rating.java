@@ -22,5 +22,5 @@ public class Rating extends BaseEntity {
     @JoinColumn(name = "user_id")
     private User user;
 
-    private Integer score;
+    private int score;
 }

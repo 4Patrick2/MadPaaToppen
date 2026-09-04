@@ -7,6 +7,16 @@ from ingredient_category;
 select *
 from unit;
 
+select *
+from recipe;
+
+select *
+from rating;
+
+update recipe
+set recipe_family_id = '20f69e1e-f7e8-49f8-98cb-68e5b2876496'
+where id = '10f69e1e-f7e8-49f8-98cb-68e5b2876496';
+
 INSERT INTO unit (name, abbr)
 VALUES ('kilo', 'kg');
 
@@ -15,6 +25,16 @@ VALUES ('gram', 'g');
 
 INSERT INTO unit (name, abbr)
 VALUES ('stykke', 'stk');
+
+insert into recipe(title, description, cook_time, servings, version, recipe_family_id)
+VALUES (
+    'Bedre Stegt flæsk',
+    'Bedre Stegt flæsk med persillesovs',
+    60,
+    4,
+    2,
+    '20f69e1e-f7e8-49f8-98cb-68e5b2876496'  
+)
 
 insert into recipe_ingredient (recipe_id, ingredient_id, quantity, unit_id, note) 
 VALUES (
@@ -45,3 +65,11 @@ VALUES (
     1, 
     'e6fe66cb-4a3a-4c97-9cc4-9e6495f34542',
     null) 
+
+
+
+insert into rating (recipe_id, score)
+values (
+    '10f69e1e-f7e8-49f8-98cb-68e5b2876496',
+    4
+)

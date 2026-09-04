@@ -15,9 +15,12 @@ public record RecipeResponse(
         Integer cookTime,
         Integer servings,
         Integer version,
+        List<RecipeVersionResponse> versions,
         List<RecipeIngredientResponse> ingredients
 ) {
-    public RecipeResponse(Recipe recipe, List<RecipeIngredientResponse> ingredients) {
+    public RecipeResponse(Recipe recipe, 
+        List<RecipeIngredientResponse> ingredients,
+        List<RecipeVersionResponse> versions) {
         this(
                 recipe.getId(),
                 recipe.getTitle(),
@@ -27,6 +30,7 @@ public record RecipeResponse(
                 recipe.getCookTime(),
                 recipe.getServings(),
                 recipe.getVersion(),
+                versions,
                 ingredients
         );
     }

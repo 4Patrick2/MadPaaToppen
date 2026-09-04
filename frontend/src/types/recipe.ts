@@ -6,7 +6,7 @@ export interface Recipe {
   prepTime: number | null;
   cookTime: number | null;
   servings: number;
-  version: number;
+  version: RecipeVersion[];
 }
 
 export interface RecipeResponse {
@@ -18,6 +18,8 @@ export interface RecipeResponse {
   cookTime: number | null;
   servings: number;
   ingredients: RecipeIngredient[] | null
+  version: number;
+  versions: RecipeVersion[];
 }
 
 export interface Instruction {
@@ -43,4 +45,14 @@ export interface RecipeIngredient {
   unit: Unit;
   note: string;
   element: string | null;
+}
+
+export interface RecipeVersion {
+    id: string;
+    version: number;
+}
+
+export interface RecipeRatingResponse {
+    recipe_id: string;
+    rating: number;
 }
